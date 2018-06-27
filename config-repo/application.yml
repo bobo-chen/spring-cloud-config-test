@@ -1,0 +1,33 @@
+server:
+  port: 8001
+  
+spring:
+  application:
+    name: zuul
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.200.78:8761/eureka/
+      healthcheck:
+        enabled: true
+  instance:
+    ip-address: 192.168.200.78
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.ip-address}:${server.port} #修改eureka注册时  Status 列显示
+
+    
+## 配置stripPrefix
+# http://localhost:8001/api5/ribbon-service-employee-provider/employee/findEmployee/1
+zuul:
+  prefix: /api5 
+  
+logging:
+  level:
+    com.netflix: debug
+    
+   
+   
+    
+
+    
